@@ -1,1 +1,5 @@
 export const NO_ACTION = 'NO_ACTION'
+
+export const LOADTOKEN_SUCCESS = 'LOADTOKEN_SUCCESS'
+
+export const LOADTOKEN_ERROR = 'LOADTOKEN_ERROR'
