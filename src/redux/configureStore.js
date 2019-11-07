@@ -16,7 +16,9 @@ const getCookieByName = (name) => {
 
 const getInitialState = () => {
     
-    let token = getCookieByName('token');
+    // let token = getCookieByName('token');
+
+    let token = "dkcmdslckmsklc"
 
     if(token) {
         return {

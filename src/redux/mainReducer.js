@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { combineEpics } from 'redux-observable';
 import { ajax } from 'rxjs/ajax'
 
+
 const retrieveViaAjax = (token, url) => {
     return (
         ajax({
@@ -19,7 +20,6 @@ const retrieveViaAjax = (token, url) => {
 };
 
 const updateViaAjax = (token, url, data) => {
-    console.log("URL :"+url)
     return (
         ajax({
             url: url,
@@ -35,10 +35,13 @@ const updateViaAjax = (token, url, data) => {
 }
 
 // #1
-import { cusotmerForm } from  './reducers/customerForm'
+import { fetchInvitation, loadCountries} from './epics/customerForm'
+import { customerForm } from  './reducers/customerForm'
+import { loadToken } from './reducers/loginToken'
 
 export const mainReducer = combineReducers({
-    cusotmerForm: cusotmerForm,
+    customerForm: customerForm,
+    loadToken : loadToken
 })
 
-export const epics = (...args) => combineEpics()(...args, { ajax, retrieveViaAjax, updateViaAjax })
+export const epics = (...args) => combineEpics(fetchInvitation, loadCountries)(...args, { ajax, retrieveViaAjax, updateViaAjax })
